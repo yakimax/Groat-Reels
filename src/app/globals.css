@@ -1,11 +1,11 @@
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1995AD;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #1995AD;
     --foreground: #ededed;
   }
 }
@@ -39,4 +39,55 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+
+.Signup-container{
+  display: flex;
+  flex-direction: column;
+  max-width: 20vw;
+  gap:1rem;
+}
+
+.Main-container{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin-top:30vh;
+}
+
+.Main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subdiv{
+    position: relative;
+    border-radius: 1rem;
+    background-color: #1995AD;
+    height: 81vh;
+    width: 23vw;
+    margin-top: 10vh;
+    overflow: auto;
+    scroll-snap-type: y proximity;
+}
+.subdiv::-webkit-scrollbar{
+    display: none;
+}
+.reel{
+    border-radius: 1rem;
+    width: 23vw;
+    height: 81vh;
+    background-color: white ;
+    object-fit: cover;
+
+}
+
+.icons{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    z-index: 1;
 }
