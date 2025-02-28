@@ -338,7 +338,7 @@ function PageContent() {
                         </div>
                     </div>
                 </div>
-                <Button sx={{marginLeft:"94vw",fontSize:"2rem",color:"white",top:"10",position:"absolute"}} onClick={handleOpen}>{<AssistantIcon sx={{fontSize:"4rem"}}/>}</Button>
+                {/* <Button sx={{marginLeft:"94vw",fontSize:"2rem",color:"white",top:"10",position:"absolute"}} onClick={handleOpen}>{<AssistantIcon sx={{fontSize:"4rem"}}/>}</Button> */}
                 <Modal
                     open={open}
                     onClose={handleClose}

@@ -26,8 +26,11 @@ export default function RootLayout({ children }) {
           integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
           crossorigin="anonymous"
           referrerPolicy="no-referrer"
-        /></head>
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="theme-color" content="#1995AD" />
         <title>Groat</title>
+        </head>      
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
       </body>
