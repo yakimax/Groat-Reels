@@ -20,16 +20,18 @@ const supabase = createClient(url,key);
 const style = {
   position: 'absolute',
   top: '20%',
-  left: '70%',
-  height:500,
-  borderRadius:"1rem",
-//   transform: 'translate(-50%, -50%)',
-  width: 400,
+  left: '50%',
+  transform: 'translateX(-50%)',
+  height: '80vh',
+  maxHeight: 500,
+  borderRadius: "1rem",
+  width: '90vw',
+  maxWidth: 400,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
-  color:"black"
+  color: "black"
 };
 
     
@@ -284,9 +286,22 @@ function PageContent() {
                 <div>
                     <div className="Main">
                         <div className="icons">
-                        <Button sx={{position:"absolute",top:"10vh",right:"7.7vw",color:"white",fontSize:"2rem"}} onClick={handleOpen}>{<AssistantIcon sx={{fontSize:"4rem"}}/>}</Button>
+                        <Button 
+                            sx={{
+                                position: "absolute",
+                                top: "10vh",
+                                right: "20px",
+                                color: "white",
+                                fontSize: "1.5rem"
+                            }} 
+                            onClick={handleOpen}>
+                            <AssistantIcon sx={{fontSize: "2.5rem"}}/>
+                        </Button>
                             <Button
-                                style={{top:"35vh", right:"7.7vw"}}
+                                style={{
+                                    top: "35vh",
+                                    right: "20px"
+                                }}
                                 onClick={() => {/* Add share handler */}}
                                 disableRipple
                                 sx={{
@@ -294,10 +309,13 @@ function PageContent() {
                                         "&:active": { backgroundColor: "transparent" },
                                     }
                                 }}>
-                                <i className="fa-regular fa-share-from-square icons" style={{color: "white",fontSize: "2.8rem"}}></i>
+                                <i className="fa-regular fa-share-from-square icons" style={{color: "white",fontSize: "2rem"}}></i>
                             </Button>
                             <Button
-                                style={{top:"20vh", right:"7.7vw"}}
+                                style={{
+                                    top: "20vh",
+                                    right: "20px"
+                                }}
                                 onClick={() => {/* Add comment handler */}}
                                 disableRipple
                                 sx={{
@@ -309,7 +327,10 @@ function PageContent() {
                             </Button>
                             {/* <Button style={{top:"10vh", right:"7.7vw"}} onClick={() => Add like handler} disableRipple sx={{"&.MuiButtonBase-root": {"&:active": { backgroundColor: "transparent" },}}}><i id="like" className="fa-solid fa-thumbs-up icons" style={{color: "white",fontSize: "2.8rem"}}></i></Button> */}
                             <Button 
-                                style={{top:"27vh", right:"7.9vw"}} 
+                                style={{
+                                    top: "27vh",
+                                    right: "20px"
+                                }} 
                                 onClick={handleRemove}
                                 disableRipple
                                 sx={{
@@ -338,7 +359,6 @@ function PageContent() {
                         </div>
                     </div>
                 </div>
-                {/* <Button sx={{marginLeft:"94vw",fontSize:"2rem",color:"white",top:"10",position:"absolute"}} onClick={handleOpen}>{<AssistantIcon sx={{fontSize:"4rem"}}/>}</Button> */}
                 <Modal
                     open={open}
                     onClose={handleClose}
@@ -358,7 +378,10 @@ function PageContent() {
                             rows={1}
                             placeholder='What can i help you with?'
                             variant="filled"
-                            sx={{width:"20rem",marginTop:35}}
+                            sx={{
+                                width: "100%",
+                                marginTop: 35
+                            }}
                         />
                     </Box>
                 </Modal>
