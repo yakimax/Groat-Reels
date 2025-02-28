@@ -280,7 +280,7 @@ function PageContent() {
                 <div>
                     <div className="Main">
                         <div className="subdiv" ref={subdiv}>
-                            {videoUrl.map((file, index) => (
+                            {videoUrl.map((file) => (
                                 <div className="reel-container" key={file.id}>
                                     <video 
                                         className="reel"
@@ -292,7 +292,10 @@ function PageContent() {
                                         <source src={file.publicUrl} type="video/mp4" />
                                     </video>
                                     <div className="icons">
-                                        <Button sx={{color:"white",fontSize:"2rem"}} onClick={handleOpen}>
+                                        <Button 
+                                            sx={{color:"white",fontSize:"2rem"}}
+                                            onClick={handleOpen}
+                                        >
                                             <AssistantIcon sx={{fontSize:"4rem"}}/>
                                         </Button>
                                         <Button
@@ -302,7 +305,7 @@ function PageContent() {
                                                 "&.MuiButtonBase-root": {
                                                     "&:active": { backgroundColor: "transparent" },
                                                 }
-                                            }}>
+                                        }}>
                                             <i className="fa-regular fa-share-from-square" style={{color: "white",fontSize: "2.8rem"}}></i>
                                         </Button>
                                         <Button
@@ -312,7 +315,7 @@ function PageContent() {
                                                 "&.MuiButtonBase-root": {
                                                     "&:active": { backgroundColor: "transparent" },
                                                 }
-                                            }}>
+                                        }}>
                                             <i className="fa-regular fa-comment-dots" style={{color: "white",fontSize: "2.8rem"}}></i>
                                         </Button>
                                         <Button 
@@ -322,7 +325,7 @@ function PageContent() {
                                                 "&.MuiButtonBase-root": {
                                                     "&:active": { backgroundColor: "transparent" },
                                                 }
-                                            }}>
+                                        }}>
                                             <DeleteIcon sx={{fontSize:"3.5rem",color:"white"}}/>
                                         </Button>
                                     </div>
