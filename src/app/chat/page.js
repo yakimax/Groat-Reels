@@ -20,23 +20,17 @@ const supabase = createClient(url,key);
 const style = {
   position: 'absolute',
   top: '20%',
-  left: '50%',
-  transform: 'translateX(-50%)',
-  height: '80vh',
-  maxHeight: 500,
-  borderRadius: "1rem",
-  width: '90vw',
-  maxWidth: 400,
+  left: '70%',
+  height:500,
+  borderRadius:"1rem",
+//   transform: 'translate(-50%, -50%)',
+  width: 400,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
-  color: "black"
+  color:"black"
 };
-
-    
-
-
 
 function PageContent() {
     const router = useRouter();
@@ -285,76 +279,54 @@ function PageContent() {
             <div>
                 <div>
                     <div className="Main">
-                        <div className="icons">
-                        <Button 
-                            sx={{
-                                position: "absolute",
-                                top: "10vh",
-                                right: "20px",
-                                color: "white",
-                                fontSize: "1.5rem"
-                            }} 
-                            onClick={handleOpen}>
-                            <AssistantIcon sx={{fontSize: "2.5rem"}}/>
-                        </Button>
-                            <Button
-                                style={{
-                                    top: "35vh",
-                                    right: "20px"
-                                }}
-                                onClick={() => {/* Add share handler */}}
-                                disableRipple
-                                sx={{
-                                    "&.MuiButtonBase-root": {
-                                        "&:active": { backgroundColor: "transparent" },
-                                    }
-                                }}>
-                                <i className="fa-regular fa-share-from-square icons" style={{color: "white",fontSize: "2rem"}}></i>
-                            </Button>
-                            <Button
-                                style={{
-                                    top: "20vh",
-                                    right: "20px"
-                                }}
-                                onClick={() => {/* Add comment handler */}}
-                                disableRipple
-                                sx={{
-                                    "&.MuiButtonBase-root": {
-                                        "&:active": { backgroundColor: "transparent" },
-                                    }
-                                }}>
-                                <i className="fa-regular fa-comment-dots icons" style={{color: "white",fontSize: "2.8rem"}}></i>
-                            </Button>
-                            {/* <Button style={{top:"10vh", right:"7.7vw"}} onClick={() => Add like handler} disableRipple sx={{"&.MuiButtonBase-root": {"&:active": { backgroundColor: "transparent" },}}}><i id="like" className="fa-solid fa-thumbs-up icons" style={{color: "white",fontSize: "2.8rem"}}></i></Button> */}
-                            <Button 
-                                style={{
-                                    top: "27vh",
-                                    right: "20px"
-                                }} 
-                                onClick={handleRemove}
-                                disableRipple
-                                sx={{
-                                    "&.MuiButtonBase-root": {
-                                        "&:active": { backgroundColor: "transparent" },
-                                    }
-                                }}>
-                                <DeleteIcon sx={{fontSize:"3.5rem",color:"white"}}/>
-                            </Button>
-                        </div>
-                        <div className="subdiv" 
-                            ref={subdiv}
-                        >
+                        <div className="subdiv" ref={subdiv}>
                             {videoUrl.map((file, index) => (
-                                <video 
-                                    key={file.id}
-                                    className="reel"
-                                    loop
-                                    playsInline
-                                    muted
-                                    onPlay={() => setActiveVideoId(file.id)}
-                                >
-                                    <source src={file.publicUrl} type="video/mp4" />
-                                </video>
+                                <div className="reel-container" key={file.id}>
+                                    <video 
+                                        className="reel"
+                                        loop
+                                        playsInline
+                                        muted
+                                        onPlay={() => setActiveVideoId(file.id)}
+                                    >
+                                        <source src={file.publicUrl} type="video/mp4" />
+                                    </video>
+                                    <div className="icons">
+                                        <Button sx={{color:"white",fontSize:"2rem"}} onClick={handleOpen}>
+                                            <AssistantIcon sx={{fontSize:"4rem"}}/>
+                                        </Button>
+                                        <Button
+                                            onClick={() => {/* Add share handler */}}
+                                            disableRipple
+                                            sx={{
+                                                "&.MuiButtonBase-root": {
+                                                    "&:active": { backgroundColor: "transparent" },
+                                                }
+                                            }}>
+                                            <i className="fa-regular fa-share-from-square" style={{color: "white",fontSize: "2.8rem"}}></i>
+                                        </Button>
+                                        <Button
+                                            onClick={() => {/* Add comment handler */}}
+                                            disableRipple
+                                            sx={{
+                                                "&.MuiButtonBase-root": {
+                                                    "&:active": { backgroundColor: "transparent" },
+                                                }
+                                            }}>
+                                            <i className="fa-regular fa-comment-dots" style={{color: "white",fontSize: "2.8rem"}}></i>
+                                        </Button>
+                                        <Button 
+                                            onClick={handleRemove}
+                                            disableRipple
+                                            sx={{
+                                                "&.MuiButtonBase-root": {
+                                                    "&:active": { backgroundColor: "transparent" },
+                                                }
+                                            }}>
+                                            <DeleteIcon sx={{fontSize:"3.5rem",color:"white"}}/>
+                                        </Button>
+                                    </div>
+                                </div>
                             ))}
                         </div>
                     </div>
@@ -378,10 +350,7 @@ function PageContent() {
                             rows={1}
                             placeholder='What can i help you with?'
                             variant="filled"
-                            sx={{
-                                width: "100%",
-                                marginTop: 35
-                            }}
+                            sx={{width:"20rem",marginTop:35}}
                         />
                     </Box>
                 </Modal>
