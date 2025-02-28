@@ -11,8 +11,6 @@ import { createClient } from '@supabase/supabase-js';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
-import { isMobile } from 'react-device-detect';
-import { motion } from 'framer-motion';
 
 let url = "https://dlrehwydsvuxrpesaemj.supabase.co"
 let key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRscmVod3lkc3Z1eHJwZXNhZW1qIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDAzNzU4MzgsImV4cCI6MjA1NTk1MTgzOH0.RqykeoJ0KGhryJOgSWp3XnGhGople6oDyd3fLB8OolU"
@@ -21,36 +19,22 @@ const supabase = createClient(url,key);
 
 const style = {
   position: 'absolute',
-  top: isMobile ? '10%' : '20%',
-  left: isMobile ? '5%' : '70%',
-  height: isMobile ? '70vh' : 500,
-  width: isMobile ? '90vw' : 400,
-  borderRadius: "1rem",
+  top: '20%',
+  left: '70%',
+  height:500,
+  borderRadius:"1rem",
+//   transform: 'translate(-50%, -50%)',
+  width: 400,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
-  color: "black"
+  color:"black"
 };
 
-const responsiveButtonStyle = {
-    color: "white",
-    fontSize: isMobile ? "1.5rem" : "2rem",
-    zIndex: 10,
-    minWidth: 'unset',
-    padding: isMobile ? "8px" : "12px",
-}
+    
 
-const buttonContainerStyle = {
-    position: "absolute",
-    display: "flex",
-    flexDirection: "column",
-    gap: "10px",
-    right: "10px",
-    top: "50%",
-    transform: "translateY(-50%)",
-    zIndex: 10,
-}
+
 
 function PageContent() {
     const router = useRouter();
@@ -299,90 +283,69 @@ function PageContent() {
             <div>
                 <div>
                     <div className="Main">
-                        <div className="subdiv" ref={subdiv}>
+                        <div className="icons">
+                        <Button sx={{position:"absolute",top:"10vh",right:"7.7vw",color:"white",fontSize:"2rem"}} onClick={handleOpen}>{<AssistantIcon sx={{fontSize:"4rem"}}/>}</Button>
+                            <Button
+                                style={{top:"35vh", right:"7.7vw"}}
+                                onClick={() => {/* Add share handler */}}
+                                disableRipple
+                                sx={{
+                                    "&.MuiButtonBase-root": {
+                                        "&:active": { backgroundColor: "transparent" },
+                                    }
+                                }}>
+                                <i className="fa-regular fa-share-from-square icons" style={{color: "white",fontSize: "2.8rem"}}></i>
+                            </Button>
+                            <Button
+                                style={{top:"20vh", right:"7.7vw"}}
+                                onClick={() => {/* Add comment handler */}}
+                                disableRipple
+                                sx={{
+                                    "&.MuiButtonBase-root": {
+                                        "&:active": { backgroundColor: "transparent" },
+                                    }
+                                }}>
+                                <i className="fa-regular fa-comment-dots icons" style={{color: "white",fontSize: "2.8rem"}}></i>
+                            </Button>
+                            {/* <Button style={{top:"10vh", right:"7.7vw"}} onClick={() => Add like handler} disableRipple sx={{"&.MuiButtonBase-root": {"&:active": { backgroundColor: "transparent" },}}}><i id="like" className="fa-solid fa-thumbs-up icons" style={{color: "white",fontSize: "2.8rem"}}></i></Button> */}
+                            <Button 
+                                style={{top:"27vh", right:"7.9vw"}} 
+                                onClick={handleRemove}
+                                disableRipple
+                                sx={{
+                                    "&.MuiButtonBase-root": {
+                                        "&:active": { backgroundColor: "transparent" },
+                                    }
+                                }}>
+                                <DeleteIcon sx={{fontSize:"3.5rem",color:"white"}}/>
+                            </Button>
+                        </div>
+                        <div className="subdiv" 
+                            ref={subdiv}
+                        >
                             {videoUrl.map((file, index) => (
-                                <motion.div 
+                                <video 
                                     key={file.id}
-                                    className="reel-container"
-                                    whileTap={{ scale: 0.98 }}
-                                    drag={isMobile ? "y" : false}
-                                    dragConstraints={{ top: 0, bottom: 0 }}
+                                    className="reel"
+                                    loop
+                                    playsInline
+                                    muted
+                                    onPlay={() => setActiveVideoId(file.id)}
                                 >
-                                    <video 
-                                        className="reel"
-                                        loop
-                                        playsInline
-                                        muted
-                                        onPlay={() => setActiveVideoId(file.id)}
-                                    >
-                                        <source src={file.publicUrl} type="video/mp4" />
-                                    </video>
-                                    
-                                    <Box sx={buttonContainerStyle}>
-                                        <Button 
-                                            sx={responsiveButtonStyle}
-                                            onClick={handleOpen}
-                                        >
-                                            <AssistantIcon sx={{
-                                                fontSize: isMobile ? "2.5rem" : "4rem"
-                                            }}/>
-                                        </Button>
-                                        
-                                        <Button
-                                            sx={responsiveButtonStyle}
-                                            onClick={() => {/* Add share handler */}}
-                                            disableRipple
-                                        >
-                                            <i className="fa-regular fa-share-from-square" 
-                                               style={{
-                                                   color: "white",
-                                                   fontSize: isMobile ? "2rem" : "2.8rem"
-                                               }}
-                                            />
-                                        </Button>
-                                        
-                                        <Button
-                                            sx={responsiveButtonStyle}
-                                            onClick={() => {/* Add comment handler */}}
-                                            disableRipple
-                                        >
-                                            <i className="fa-regular fa-comment-dots" 
-                                               style={{
-                                                   color: "white",
-                                                   fontSize: isMobile ? "2rem" : "2.8rem"
-                                               }}
-                                            />
-                                        </Button>
-                                        
-                                        <Button 
-                                            sx={responsiveButtonStyle}
-                                            onClick={handleRemove}
-                                            disableRipple
-                                        >
-                                            <DeleteIcon sx={{
-                                                fontSize: isMobile ? "2.5rem" : "3.5rem",
-                                                color: "white"
-                                            }}/>
-                                        </Button>
-                                    </Box>
-                                </motion.div>
+                                    <source src={file.publicUrl} type="video/mp4" />
+                                </video>
                             ))}
                         </div>
                     </div>
                 </div>
+                {/* <Button sx={{marginLeft:"94vw",fontSize:"2rem",color:"white",top:"10",position:"absolute"}} onClick={handleOpen}>{<AssistantIcon sx={{fontSize:"4rem"}}/>}</Button> */}
                 <Modal
                     open={open}
                     onClose={handleClose}
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
                 >
-                    <Box sx={{
-                        ...style,
-                        width: isMobile ? '90vw' : 400,
-                        height: isMobile ? '70vh' : 500,
-                        left: isMobile ? '5%' : '70%',
-                        top: isMobile ? '10%' : '20%',
-                    }}>
+                    <Box sx={style}>
                         <Typography id="modal-modal-title" variant="h6" component="h2">
                             Groat Support <CloseIcon sx={{marginLeft:"10rem",fontSize:"2rem"}} onClick={handleClose}/>
                         </Typography>
@@ -401,9 +364,7 @@ function PageContent() {
                 </Modal>
             </div>
             :
-            <div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"100vh",fontSize:"2rem",color:"black"}}>
-                No session found Please login/Signup again
-            </div>
+            <div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"100vh",fontSize:"2rem",color:"black"}}>No session found Please login/Signup again</div>
         )
     );
 }
