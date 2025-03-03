@@ -50,22 +50,32 @@ function PageContent() {
 
     async function getVideo() {
       try {
-          const { data, error } = await supabase.storage.from('Reels').list('Public');
-          if (error) {
-              console.error('Error fetching video:', error);
-              return;
+          const response = await fetch('/api/auth/fetchvideo');
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
           }
-          if (data.length === 0) {
+          const data = await response.json();
+          console.log('Fetch video response:', data);
+
+          if (!data || data.length === 0) {
             console.log('No files found in bucket');
             return;
           }
 
-          const filesWithUrls = data.map(file => {
-            const { data: { publicUrl } } = supabase.storage
-              .from('Reels')
-              .getPublicUrl(`Public/${file.name}`);
-            return { ...file, publicUrl };
+          const urlResponse = await fetch('/api/auth/fetchurls', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
           });
+
+          const { filesWithUrls, errors } = await urlResponse.json();
+          console.log('here',filesWithUrls);
+          if(errors){
+            console.log(errors.message);
+            return;
+          }
 
           // Fix: Show videos that are NOT in the removedVideo array
           setVideoUrl(filesWithUrls.filter((video) => {

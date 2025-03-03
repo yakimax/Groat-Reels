@@ -13,7 +13,6 @@ let url = "https://dlrehwydsvuxrpesaemj.supabase.co";
 let key =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRscmVod3lkc3Z1eHJwZXNhZW1qIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDAzNzU4MzgsImV4cCI6MjA1NTk1MTgzOH0.RqykeoJ0KGhryJOgSWp3XnGhGople6oDyd3fLB8OolU";
 
-const supabase = createClient(url, key);
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
   ...theme.typography.body2,
@@ -46,29 +45,24 @@ export default function Home() {
     return true;
   };
 
-  const Login = async () => {
+  const signUp = async () => {
     if (!validateInputs()) {
       return;
     }
-    try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: email,
-        password: pass,
-      });
-      if (error) {
-        console.error("Error:", error.message);
-        alert(error.message);
-        return;
-      }
-
-      if (data.user) {
-        router.push("/chat?isAuth=true");
-      } else {
-        alert("Login failed");
-      }
-    } catch (err) {
-      console.error("Unexpected error:", err);
-      alert("An unexpected error occurred");
+    const data = await fetch("/api/auth/signup", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({ email: email, password: pass }),
+    });
+    const res = await data.json();
+    console.log(res);
+    if (res.user.aud == "authenticated") {
+      router.push("/chat?isAuth=true");
+    } else {
+      alert("Invalid Credentials");
     }
   };
   return (
@@ -176,9 +170,9 @@ export default function Home() {
                 textTransform: "none",
               }}
               variant="contained"
-              onClick={Login}
+              onClick={signUp}
             >
-              Log In
+              Sign up
             </Button>
             <Divider
               sx={{
@@ -208,7 +202,7 @@ export default function Home() {
               }}
             >
               <GoogleIcon sx={{ fontSize: "20px", marginRight: "10px" }} />
-              <a href="/signinwithgoogle">Log in with Google</a>
+              <a href="/signinwithgoogle">Sign up with Google</a>
             </Typography>
             <a>
               <Typography
@@ -241,10 +235,10 @@ export default function Home() {
               variant="h3"
               style={{ color: "white", fontSize: "15px" }}
             >
-              Don't have an account?
-              <a href="/signup" style={{ color: "lightblue" }}>
+              Already have an account?
+              <a href="/" style={{ color: "lightblue" }}>
                 {" "}
-                Sign up
+                Log in
               </a>
             </Typography>
           </Item>
