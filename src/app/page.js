@@ -86,7 +86,7 @@ export default function Home() {
         container
         spacing={1.8}
       >
-        <Grid size={3}>
+        <Grid size={3} sx={{ width: { xs: '95%', sm: '400px' } }}>
           <Item
             style={{
               marginTop: "10px",
@@ -142,7 +142,6 @@ export default function Home() {
               type="password"
               InputProps={{
                 style: {
-                  marginTop: "5px",
                   height: "40px",
                   borderRadius: "3px",
                   border: "1px solid #353935",
@@ -152,6 +151,7 @@ export default function Home() {
               placeholder="Password"
               id="outlined-basic"
               sx={{
+                marginTop: "5px",
                 width: "80%",
                 "& .MuiOutlinedInput-root": {
                   "& fieldset": {
@@ -171,12 +171,12 @@ export default function Home() {
             />
             <Button
               sx={{
-                marginTop: "15px",
                 width: "80%",
                 height: "30px",
                 borderRadius: "6px",
                 fontWeight: "bold",
                 textTransform: "none",
+                marginTop: "15px",
               }}
               variant="contained"
               onClick={Login}
@@ -227,7 +227,7 @@ export default function Home() {
             </a>
           </Item>
         </Grid>
-        <Grid size={3} >
+        <Grid size={3} sx={{ width: { xs: '95%', sm: '400px' } }}>
           <Item
             style={{
               minHeight: "60px",
