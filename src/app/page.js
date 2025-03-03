@@ -86,7 +86,7 @@ export default function Home() {
         container
         spacing={1.8}
       >
-        <Grid size={3} sx={{ width: { xs: '95%', sm: '400px' } }}>
+        <Grid size={3} sx={{ width: { xs: '95%', sm: '350px' } }}>
           <Item
             style={{
               marginTop: "10px",
@@ -227,7 +227,7 @@ export default function Home() {
             </a>
           </Item>
         </Grid>
-        <Grid size={3} sx={{ width: { xs: '95%', sm: '400px' } }}>
+        <Grid size={3} sx={{ width: { xs: '95%', sm: '350px' } }}>
           <Item
             style={{
               minHeight: "60px",
