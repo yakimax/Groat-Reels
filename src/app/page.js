@@ -8,6 +8,10 @@ import Paper from "@mui/material/Paper";
 import { Typography, TextField, Button } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import GoogleIcon from "@mui/icons-material/Google";
+import CardMedia from '@mui/material/CardMedia';
+import Card from '@mui/material/Card';
+import appstore from './public/Applestore.png';
+import googleplay from './public/Googleplay.png';
 
 let url = "https://dlrehwydsvuxrpesaemj.supabase.co";
 let key =
@@ -204,6 +208,7 @@ export default function Home() {
             <Typography
               variant="h6"
               style={{
+                marginTop: "20px",
                 color: "lightblue",
                 fontSize: "15px",
                 fontFamily: "sans-serif",
@@ -252,6 +257,30 @@ export default function Home() {
             </Typography>
           </Item>
         </Grid>
+        <Typography sx={{ color: 'white', mt: 2, mb: 2 }}>Get the app.</Typography>
+        {/* <Grid container justifyContent="center" alignItems="center" sx={{ mb: 4 }}>
+          <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
+            <img
+              src={'none'}
+              width={200}
+              height={100}
+              style={{ 
+                marginTop: '50px',
+                objectFit: 'contain',
+                cursor: 'pointer',
+                backgroundColor: 'black',
+              }}
+            /><img
+              src={'none'}
+              width={200}
+              height={200}
+              style={{ 
+                objectFit: 'contain',
+                cursor: 'pointer',
+              }}
+            />
+          </div>
+        </Grid> */}
       </Grid>
     </div>
   );
