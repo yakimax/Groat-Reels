@@ -142,6 +142,7 @@ export default function Home() {
               type="password"
               InputProps={{
                 style: {
+                  marginTop: "5px",
                   height: "40px",
                   borderRadius: "3px",
                   border: "1px solid #353935",
@@ -170,6 +171,7 @@ export default function Home() {
             />
             <Button
               sx={{
+                marginTop: "15px",
                 width: "80%",
                 height: "30px",
                 borderRadius: "6px",

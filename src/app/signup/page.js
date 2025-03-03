@@ -66,7 +66,7 @@ export default function Home() {
     }
   };
   return (
-    <div>
+    <div style={{ minHeight: '100vh' }}>
       <Grid
         style={{
           backgroundColor: "black",
@@ -74,18 +74,21 @@ export default function Home() {
           alignItems: "center",
           display: "flex",
           flexDirection: "column",
+          margin: 0,
+          width: '100%',
         }}
         container
         spacing={1.8}
       >
-        <Grid size={3}>
+        <Grid size={3} sx={{ width: { xs: '95%', sm: '400px' } }}>
           <Item
             style={{
               marginTop: "10px",
-              height: "410px",
+              minHeight: "410px",
               backgroundColor: "black",
               border: "1px solid #353935",
               borderRadius: "0px",
+              width: '100%',
             }}
           >
             <Typography
@@ -219,16 +222,17 @@ export default function Home() {
             </a>
           </Item>
         </Grid>
-        <Grid size={3}>
+        <Grid size={3} sx={{ width: { xs: '95%', sm: '400px' } }}>
           <Item
             style={{
-              height: "60px",
+              minHeight: "60px",
               backgroundColor: "black",
               border: "1px solid #353935",
               borderRadius: "0px",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              width: '100%',
             }}
           >
             <Typography
