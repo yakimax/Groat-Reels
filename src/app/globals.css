@@ -42,18 +42,7 @@ a {
 }
 
 
-.Signup-container {
-  display: flex;
-  flex-direction: column;
-  max-width: 90vw;
-  gap: 1rem;
-}
 
-@media (min-width: 768px) {
-  .Signup-container {
-    max-width: 20vw;
-  }
-}
 
 .Main-container {
   flex: 1;
